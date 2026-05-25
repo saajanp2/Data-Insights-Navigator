@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Insights Navigator | High-Fidelity Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #030305;
+        }
+        .font-display {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .glass-surface {
+            background: rgba(15, 15, 22, 0.65);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+        .glass-surface-active {
+            background: rgba(24, 24, 37, 0.85);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+            box-shadow: 0 0 25px rgba(139, 92, 246, 0.1);
+        }
+        .aurora-blur {
+            filter: blur(130px);
+            opacity: 0.12;
+            mix-blend-mode: screen;
+            animation: drift 16s infinite alternate ease-in-out;
+        }
+        @keyframes drift {
+            0% { transform: translate(0px, 0px) scale(1); }
+            50% { transform: translate(40px, -40px) scale(1.1); }
+            100% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+    </style>
+</head>
+<body class="text-zinc-300 antialiased overflow-x-hidden">
+
+    <div class="absolute top-0 left-1/3 w-[600px] h-[600px] bg-gradient-to-tr from-sky-500 via-indigo-500 to-purple-600 rounded-full aurora-blur pointer-events-none"></div>
+    <div class="absolute top-[900px] right-1/4 w-[500px] h-[500px] bg-gradient-to-br from-purple-600 via-fuchsia-500 to-pink-500 rounded-full aurora-blur pointer-events-none"></div>
+
+    <header class="sticky top-0 z-50 w-full border-b border-white/5 bg-[#030305]/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="h-8 w-8 rounded-lg bg-gradient-to-tr from-sky-400 via-purple-500 to-indigo-600 p-[1.5px]">
+                    <div class="w-full h-full bg-[#030305] rounded-[6px] flex items-center justify-center">
+                        <span class="text-white text-xs font-bold font-display">DI</span>
+                    </div>
+                </div>
+                <span class="font-display font-bold text-lg tracking-tight text-white">Data Insights Navigator</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-purple-500/10 text-purple-400 border border-purple-500/20">
+                    <span class="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2 animate-pulse"></span>Prototype Mode
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <main class="relative z-10 max-w-7xl mx-auto px-6 py-12">
+        
+        <section class="text-center pt-8 pb-16">
+            <h1 class="font-display font-bold text-4xl md:text-6xl text-white tracking-tight max-w-4xl mx-auto leading-tight mb-6">
+                Interactive Architecture Workspace
+            </h1>
+            <p class="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
+                Click across capabilities, trigger custom prompt models, and drill down into verified infrastructure configurations designed for multi-billion dollar enterprises.
+            </p>
+        </section>
+
+        <section class="mb-24">
+            <div class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-4 flex items-center justify-between">
+                <span>Section 01 // Live Intelligence Emulator</span>
+                <span>Select a Scenario to Execute</span>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-6 items-stretch">
+                <div class="space-y-3 flex flex-col justify-between">
+                    <button onclick="runScenario('monetization')" id="btn-monetization" class="w-full text-left p-4 rounded-xl glass-surface hover:bg-white/5 transition-all duration-200 border-l-2 border-l-transparent text-sm">
+                        <p class="font-semibold text-white mb-1">Scenario A: Asset Monetization</p>
+                        <p class="text-xs text-zinc-500">Audit unstructured internal datasets to deploy high-margin platforms.</p>
+                    </button>
+                    
+                    <button onclick="runScenario('iot')" id="btn-iot" class="w-full text-left p-4 rounded-xl glass-surface hover:bg-white/5 transition-all duration-200 border-l-2 border-l-transparent text-sm">
+                        <p class="font-semibold text-white mb-1">Scenario B: Sovereign IoT Scale</p>
+                        <p class="text-xs text-zinc-500">Refactor high-volume ingestion streams processing 1.8T daily data entries.</p>
+                    </button>
+                    
+                    <button onclick="runScenario('identity')" id="btn-identity" class="w-full text-left p-4 rounded-xl glass-surface hover:bg-white/5 transition-all duration-200 border-l-2 border-l-transparent text-sm">
+                        <p class="font-semibold text-white mb-1">Scenario C: Cross-Unit Identity</p>
+                        <p class="text-xs text-zinc-500">Unify disconnected enterprise indicators into secure compliance layers.</p>
+                    </button>
+                </div>
+
+                <div class="lg:col-span-2 glass-surface rounded-2xl p-6 flex flex-col justify-between shadow-2xl bg-black/40 border border-white/10">
+                    <div class="flex items-center justify-between border-b border-white/5 pb-3 mb-4">
+                        <div class="flex items-center space-x-2">
+                            <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+                            <span class="w-2.5 h-2.5 rounded-full bg-zinc-700"></span>
+                            <span class="text-xs font-mono text-zinc-500 ml-2" id="terminal-header">navigator_node_main.sh</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-zinc-600 bg-zinc-900 px-2 py-0.5 rounded">STATUS: READY</span>
+                    </div>
+                    
+                    <div class="font-mono text-xs md:text-sm space-y-4 min-h-[180px] flex-1">
+                        <div class="flex items-start space-x-2 text-sky-400">
+                            <span class="text-zinc-600 select-none">query_scope:~$</span>
+                            <span id="terminal-prompt" class="text-white font-medium">Select a scenario to witness real-time architectural processing...</span>
+                        </div>
+                        <div id="terminal-response" class="text-zinc-500 space-y-2 pl-4 border-l border-zinc-800 transition-all duration-300">
+                            <p class="text-zinc-600 text-xs">// Automated platform configuration output loops here.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-24">
+            <div class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-6">
+                <span>Section 02 // Capability Detail Studio (Click to drill down)</span>
+            </div>
+            
+            <div class="grid lg:grid-cols-12 gap-8 items-start">
+                <div class="lg:col-span-5 space-y-4">
+                    <div onclick="selectCapability(1)" id="cap-card-1" class="glass-surface p-5 rounded-xl cursor-pointer transition-all duration-300 group hover:translate-x-1">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-purple-400 font-semibold uppercase tracking-wider">Module 01</span>
+                                <h3 class="font-display font-bold text-lg text-white mt-1 group-hover:text-purple-300 transition-colors">Boardroom-to-Byte™ Strategy</h3>
+                            </div>
+                            <span class="text-zinc-600 group-hover:text-white transition-colors text-lg font-mono">→</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-2 line-clamp-2">Translating deep multi-cloud environments into crisp investment narratives for executive leadership.</p>
+                    </div>
+
+                    <div onclick="selectCapability(2)" id="cap-card-2" class="glass-surface p-5 rounded-xl cursor-pointer transition-all duration-300 group hover:translate-x-1">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-sky-400 font-semibold uppercase tracking-wider">Module 02</span>
+                                <h3 class="font-display font-bold text-lg text-white mt-1 group-hover:text-sky-300 transition-colors">Sovereign-Scale Engineering</h3>
+                            </div>
+                            <span class="text-zinc-600 group-hover:text-white transition-colors text-lg font-mono">→</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-2 line-clamp-2">Refactoring pipelines to manage trillion-message telemetry inputs with 100x latency gains.</p>
+                    </div>
+
+                    <div onclick="selectCapability(3)" id="cap-card-3" class="glass-surface p-5 rounded-xl cursor-pointer transition-all duration-300 group hover:translate-x-1">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-indigo-400 font-semibold uppercase tracking-wider">Module 03</span>
+                                <h3 class="font-display font-bold text-lg text-white mt-1 group-hover:text-indigo-300 transition-colors">Data Commercialization Engines</h3>
+                            </div>
+                            <span class="text-zinc-600 group-hover:text-white transition-colors text-lg font-mono">→</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-2 line-clamp-2">Architecting external-facing marketplace applications turning structural raw data assets into profit models.</p>
+                    </div>
+
+                    <div onclick="selectCapability(4)" id="cap-card-4" class="glass-surface p-5 rounded-xl cursor-pointer transition-all duration-300 group hover:translate-x-1">
+                        <div class="flex items-start justify-between">
+                            <div>
+                                <span class="text-[10px] font-mono text-emerald-400 font-semibold uppercase tracking-wider">Module 04</span>
+                                <h3 class="font-display font-bold text-lg text-white mt-1 group-hover:text-emerald-300 transition-colors">Identity Resolution & Governance</h3>
+                            </div>
+                            <span class="text-zinc-600 group-hover:text-white transition-colors text-lg font-mono">→</span>
+                        </div>
+                        <p class="text-xs text-zinc-400 mt-2 line-clamp-2">Unifying fragmented silo vectors while maintaining rigid, safe Privacy-by-Design structures.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 glass-surface rounded-2xl p-8 min-h-[460px] flex flex-col justify-between border border-white/10" id="deepdive-display">
+                    <div class="flex items-center justify-center h-full text-zinc-500 text-sm italic py-20">
+                        Select a capability module on the left to review exhaustive framework architectures, engineering validations, and stack configurations.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-24 border-t border-white/5 pt-16">
+            <div class="text-xs font-semibold uppercase tracking-wider text-zinc-500 mb-8 text-center">
+                <span>Section 03 // Proven Global Performance Ledger</span>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="p-6 glass-surface rounded-xl">
+                    <div class="text-3xl font-display font-bold text-white mb-1">1.8T</div>
+                    <div class="text-[11px] uppercase tracking-wider font-semibold text-purple-400 mb-2">Daily IoT Telemetry Messages</div>
+                    <p class="text-xs text-zinc-500 leading-relaxed">Engineered robust live pipeline environments handling massive continuous data ingestion securely.</p>
+                </div>
+                <div class="p-6 glass-surface rounded-xl">
+                    <div class="text-3xl font-display font-bold text-white mb-1">$5M+</div>
+                    <div class="text-[11px] uppercase tracking-wider font-semibold text-sky-400 mb-2">Annual Net-New Revenue</div>
+                    <p class="text-xs text-zinc-500 leading-relaxed">Generated through architectural optimization and commercial marketplace product creation.</p>
+                </div>
+                <div class="p-6 glass-surface rounded-xl">
+                    <div class="text-3xl font-display font-bold text-white mb-1">100x</div>
+                    <div class="text-[11px] uppercase tracking-wider font-semibold text-indigo-400 mb-2">Processing Time Reduction</div>
+                    <p class="text-xs text-zinc-500 leading-relaxed">Accelerated long-range calculation queries by replacing legacy cloud data systems.</p>
+                </div>
+                <div class="p-6 glass-surface rounded-xl">
+                    <div class="text-3xl font-display font-bold text-white mb-1">40%</div>
+                    <div class="text-[11px] uppercase tracking-wider font-semibold text-emerald-400 mb-2">Data Accessibility Gain</div>
+                    <p class="text-xs text-zinc-500 leading-relaxed">Delivered through Privacy-by-Design metadata layer architectures.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-white/5 bg-[#010103] py-6 text-center text-xs text-zinc-600">
+        <p>Data Insights Navigator Architecture Evaluation Matrix • Confidential Sign-off Environment</p>
+    </footer>
+
+    <script>
+        // Scenario Datastore
+        const scenarios = {
+            monetization: {
+                prompt: "Deploy architecture block to extract asset capitalization vectors...",
+                response: `
+                    <p class="text-emerald-400 font-semibold">✦ Monetization Execution Subroutine Active:</p>
+                    <p class="text-zinc-400">• Commencing comprehensive audit of core raw application assets.</p>
+                    <p class="text-zinc-400">• Mapping persona-based marketplace architecture layers to unlock commercial channels.</p>
+                    <p class="text-purple-400 font-medium font-mono mt-2">» SUCCESS: Scalable data infrastructure framework stabilized; verified trajectory yields $5M+ in new annual revenue streams.</p>
+                `
+            },
+            iot: {
+                prompt: "Ingest and process global industrial fleet streaming profiles...",
+                response: `
+                    <p class="text-emerald-400 font-semibold">✦ High-Scale Streaming Subroutine Active:</p>
+                    <p class="text-zinc-400">• Refactoring telemetry ingestion pipes to process 1.8 trillion records every 24 hours.</p>
+                    <p class="text-zinc-400">• Tuning message structures across cloud warehouses to drop computing overhead.</p>
+                    <p class="text-sky-400 font-medium font-mono mt-2">» SUCCESS: Global platform reliability established; data path transit costs lowered by 20%.</p>
+                `
+            },
+            identity: {
+                prompt: "Execute cross-divisional pipeline merge under multi-unit framework...",
+                response: `
+                    <p class="text-emerald-400 font-semibold">✦ Identity Resolution Subroutine Active:</p>
+                    <p class="text-zinc-400">• Normalizing disparate operational indicators across gas, electric, and core customer profiles.</p>
+                    <p class="text-zinc-400">• Interlocking automated tokenization paths with Privacy-by-Design constraints.</p>
+                    <p class="text-indigo-400 font-medium font-mono mt-2">» SUCCESS: Unified data records established. Internal secure query access expanded by 40% under total regulatory compliance.</p>
+                `
+            }
+        };
+
+        // Capability Deep-Dive Datastore
+        const capabilities = {
+            1: {
+                title: "Boardroom-to-Byte™ Strategy",
+                subtitle: "Executive Vision Realization",
+                desc: "We bridge communication gaps between engineering teams and investment committees. By translating technical architectures into transparent financial returns, we ensure complex roadmaps receive absolute alignment and secure long-term capital allocation.",
+                metrics: ["3-to-8-Year AI Roadmaps Designed", "C-Suite Alignment Frameworks Established", "Multi-Billion Dollar Asset Protection Models"],
+                stack: ["Snowflake", "DBT", "GCP Core", "Predictive Behavioral Analytics"]
+            },
+            2: {
+                title: "Sovereign-Scale Engineering",
+                subtitle: "High-Throughput Processing",
+                desc: "Replacing fragile, slow-moving legacy pipelines with high-velocity data platforms. Our architectures process massive message rates and large-scale analytical computational loads without failing under stress.",
+                metrics: ["1.8 Trillion Records Handled Daily", "100x Acceleration in Query Responses", "20% Drop in Cloud Infrastructure Streaming Costs"],
+                stack: ["Snowflake", "DBT", "Databricks", "SAP HANA", "Azure Fabric"]
+            },
+            3: {
+                title: "Data Commercialization Engines",
+                subtitle: "Turning Data into Profit Centers",
+                desc: "We completely reimagine enterprise data layers. Instead of treating storage as an operating liability or expense, we treat internal data stores as unmined capital, building secure, customer-facing delivery assets.",
+                metrics: ["$5M Generated in Annual Profits", "External Market Framework Deployment", "Data Asset Value Maximization"],
+                stack: ["Persona-Based Marketplaces", "API Access Layering", "Secure Tokenization Gateways"]
+            },
+            4: {
+                title: "Identity Resolution & Governance",
+                subtitle: "Safe, Compliant Cross-Unit Merging",
+                desc: "Breaking open disconnected business silo footprints to assemble single, highly accurate analytical identities. We structure metadata access rules carefully so your analysts work freely without violating industry regulations.",
+                metrics: ["40% Jump in Secure Internal Accessibility", "100% Compliance Auditing Preservation", "Cross-Unit Fragment Unification"],
+                stack: ["Privacy-by-Design Frameworks", "Metadata Management Tools", "GDPR / CCPA Rules Engines"]
+            }
+        };
+
+        // UI Event Handler: Terminal Selector
+        function runScenario(key) {
+            // Reset active styles on triggers
+            ['monetization', 'iot', 'identity'].forEach(k => {
+                document.getElementById(`btn-${k}`).className = "w-full text-left p-4 rounded-xl glass-surface hover:bg-white/5 transition-all duration-200 border-l-2 border-l-transparent text-sm";
+            });
+            
+            // Set active highlight
+            document.getElementById(`btn-${key}`).className = "w-full text-left p-4 rounded-xl glass-surface-active transition-all duration-200 border-l-2 border-l-purple-500 text-sm";
+            
+            // Inject content mimicking live script activation
+            document.getElementById('terminal-header').innerText = `navigator_core_${key}.sh`;
+            document.getElementById('terminal-prompt').innerText = scenarios[key].prompt;
+            document.getElementById('terminal-response').innerHTML = scenarios[key].response;
+        }
+
+        // UI Event Handler: Capability Deep Dive Content Dynamic Switcher
+        function selectCapability(id) {
+            // Reset active card classes
+            [1, 2, 3, 4].forEach(i => {
+                document.getElementById(`cap-card-${i}`).className = "glass-surface p-5 rounded-xl cursor-pointer transition-all duration-300 group hover:translate-x-1";
+            });
+
+            // Set current card active highlight
+            const currentCard = document.getElementById(`cap-card-${id}`);
+            let borderAccent = "border-l-purple-500";
+            if(id === 2) borderAccent = "border-l-sky-500";
+            if(id === 3) borderAccent = "border-l-indigo-500";
+            if(id === 4) borderAccent = "border-l-emerald-500";
+            currentCard.className = `glass-surface-active p-5 rounded-xl cursor-pointer transition-all duration-300 group hover:translate-x-1 border-l-2 ${borderAccent}`;
+
+            // Re-render display panel container smoothly with precise target data
+            const target = capabilities[id];
+            const panel = document.getElementById('deepdive-display');
+            
+            panel.innerHTML = `
+                <div class="space-y-6">
+                    <div>
+                        <span class="text-xs font-mono font-bold tracking-widest text-purple-400 uppercase">${target.subtitle}</span>
+                        <h2 class="font-display font-bold text-2xl text-white mt-1">${target.title}</h2>
+                    </div>
+                    
+                    <p class="text-zinc-400 text-sm leading-relaxed">${target.desc}</p>
+                    
+                    <div class="space-y-3">
+                        <p class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500">// Benchmarks Delivered</p>
+                        <ul class="space-y-2 text-xs">
+                            ${target.metrics.map(m => `<li class="flex items-center text-zinc-300"><span class="w-1.5 h-1.5 rounded-full bg-purple-400 mr-2.5"></span> ${m}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div class="pt-6 border-t border-white/5">
+                        <p class="text-xs font-mono font-bold uppercase tracking-wider text-zinc-500 mb-3">// Architecture Stack Verified</p>
+                        <div class="flex flex-wrap gap-2">
+                            ${target.stack.map(s => `<span class="bg-white/5 border border-white/5 rounded-md px-3 py-1 text-xs text-zinc-300 font-mono">${s}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize Workspace Defaults On Window Boot
+        window.onload = () => {
+            runScenario('monetization');
+            selectCapability(1);
+        };
+    </script>
+</body>
+</html>
